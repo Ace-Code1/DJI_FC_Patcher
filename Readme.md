@@ -421,10 +421,10 @@ chmod 755 dummy_verify.sh
 
 make a local copy (renamed) of dji_verify in /vendor/bin/ :
 
-`cp /sbin/dji_verify /vendor/bin/original_dji_verify_copy` for Spark and Mavic
+`cp /sbin/dji_verify /vendor/bin/original_dji_verify_copy` for Spark, Mavic, and P4PV2
 or
-`cp /system/bin/dji_verify /vendor/bin/original_dji_verify_copy` for P4P
-for P4 / P4 adv, check where the dji_verify tool lives in the file system and issue the right command accordingly
+`cp /system/bin/dji_verify /vendor/bin/original_dji_verify_copy` for P4P, P4 Advanced, and P4 Standard.
+
 
 (use this very same name because it's hardcoded inside dummy_verify.sh)
 
@@ -447,10 +447,9 @@ some files from the Linux setup to the Windows machine)
 
 Now the trick :
 
-`mount -o bind /vendor/bin/dummy_verify.sh /sbin/dji_verify` for Spark and Mavic
+`mount -o bind /vendor/bin/dummy_verify.sh /sbin/dji_verify` for Spark, Mavic, and P4PV2
 or
-`mount -o bind /vendor/bin/dummy_verify.sh /system/bin/dji_verify` for P4P
-for P4 / P4 adv, check where the dji_verify tool lives in the file system (`which dji_verify`) and issue the right command accordingly
+`mount -o bind /vendor/bin/dummy_verify.sh /system/bin/dji_verify` for P4P, P4 Advanced, and P4 Standard. 
 
 This will have the following effect : actual dji_verify is "replaced" by dummy_verify.sh that gets called instead when the actual flashing will start.
 A short read to dummy_verify script should let you understand how it works (and why it's called that way) : Just calling the dji_verify "copy"
